@@ -42,7 +42,8 @@ jobs:
         with:
           context: .
           file: ./zephyr-base/Dockerfile
-          push: ${{ github.event_name != 'pull_request' }}
+          # push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: ghcr.io/${{ github.actor }}/zephyr:base-${{ matrix.sdk }}SDK
           build-args: |
             ZEPHYR_SDK_VERSION=${{ matrix.sdk }}
