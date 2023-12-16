@@ -41,6 +41,8 @@ jobs:
           file: ./zephyr-base/Dockerfile
           # push: ${{ github.event_name != 'pull_request' }}
           push: true
+          platforms: linux/amd64,linux/arm64
+          provenance: false
           tags: ghcr.io/${{ github.repository_owner }}/zephyr:base-${{ matrix.sdk }}SDK
           build-args: |
             ZEPHYR_SDK_VERSION=${{ matrix.sdk }}
@@ -105,6 +107,8 @@ jobs:
           file: ./zephyr/Dockerfile
           # push: ${{ github.event_name != 'pull_request' }}
           push: true
+          platforms: linux/amd64,linux/arm64
+          provenance: false
           tags: ghcr.io/${{ github.repository_owner }}/zephyr:${{ matrix.toolchain.nick }}-${{ matrix.sdk }}SDK
           build-args: |
             BASE_IMAGE=ghcr.io/embeddedcontainers/zephyr:base-${{ matrix.sdk }}SDK
