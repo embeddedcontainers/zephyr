@@ -108,4 +108,4 @@ jobs:
           tags: ghcr.io/${{ github.repository_owner }}/zephyr:${{ matrix.toolchain.nick }}-${{ matrix.sdk }}SDK
           build-args: |
             BASE_IMAGE=ghcr.io/embeddedcontainers/zephyr:base-${{ matrix.sdk }}SDK
-            ZEPHYR_SDK_TOOLCHAINS="-t ${{ matrix.toolchain.arch }}"
+            ZEPHYR_SDK_TOOLCHAINS='-t ${{ matrix.toolchain.arch }}'
