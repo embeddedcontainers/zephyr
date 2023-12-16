@@ -1,8 +1,6 @@
 name: Zephyr development containers
 
 on:
-  schedule:
-    - cron: '24 8 * * *'
   push:
     branches: [ main ]
   pull_request:
