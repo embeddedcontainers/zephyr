@@ -31,3 +31,9 @@ _To build an image for multiple toolchains:_
 ```
 docker build --build-arg BASE_IMAGE="zephyr:base-0.16.4SDK" --build-arg ZEPHYR_SDK_TOOLCHAINS="-t arm-zephyr-eabi -t x86_64-zephyr-elf" -f "./zephyr/Dockerfile" -t zephyr:arm_x86-0.16.4SDK "./zephyr"
 ```
+
+_There is a different Dockerfile for Posix target like `native_sim`. To build:_
+
+```
+docker build --build-arg BASE_IMAGE="zephyr:base-0.16.4SDK" -f "./zephyr-posix/Dockerfile" -t zephyr:posix-0.16.4SDK "./zephyr-posix"
+```
