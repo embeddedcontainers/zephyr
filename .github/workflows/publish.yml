@@ -114,6 +114,7 @@ jobs:
           build-args: |
             BASE_IMAGE=ghcr.io/embeddedcontainers/zephyr:base-${{ matrix.sdk }}SDK
             ZEPHYR_SDK_TOOLCHAINS=-t ${{ matrix.toolchain.arch }}
+            ZEPHYR_SDK_VERSION=${{ matrix.sdk }}
 
   posix:
     runs-on: ubuntu-latest
@@ -154,3 +155,4 @@ jobs:
           tags: ghcr.io/${{ github.repository_owner }}/zephyr:posix-${{ matrix.sdk }}SDK
           build-args: |
             BASE_IMAGE=ghcr.io/embeddedcontainers/zephyr:base-${{ matrix.sdk }}SDK
+            ZEPHYR_SDK_VERSION=${{ matrix.sdk }}
