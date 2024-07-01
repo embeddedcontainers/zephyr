@@ -58,7 +58,7 @@ jobs:
 
     strategy:
       matrix:
-        sdk: [0.16.4]
+        sdk: [0.16.8]
         toolchain: [
           { arch: "aarch64-zephyr-elf", nick: "aarch64"},
           { arch: "arc64-zephyr-elf", nick: "arc64"},
@@ -82,7 +82,7 @@ jobs:
           { arch: "xtensa-nxp_imx8ulp_adsp_zephyr-elf", nick: "xtensa-nxp_imx8ulp_adsp"},
           { arch: "xtensa-nxp_rt500_adsp_zephyr-elf", nick: "xtensa-nxp_rt500_adsp"},
           { arch: "xtensa-sample_controller_zephyr-elf", nick: "xtensa-sample_controller"},
-          { arch: "xtensa-nxp_imx8ulp_adsp_zephyr-elf", nick: "xtensa-nxp_imx8ulp_adsp_zephyr-elf"}
+          { arch: "xtensa-nxp_rt600_adsp_zephyr-elf", nick: "xtensa-nxp_rt600_adsp"}
         ]
 
     steps:
@@ -124,7 +124,7 @@ jobs:
 
     strategy:
       matrix:
-        sdk: [0.16.4]
+        sdk: [0.16.8]
 
     steps:
       - name: Checkout repository
