@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        sdk: [0.16.8]
+        sdk: [0.16.9]
 
     steps:
       - name: Checkout repository
@@ -82,7 +82,12 @@ jobs:
           { arch: "xtensa-nxp_imx8ulp_adsp_zephyr-elf", nick: "xtensa-nxp_imx8ulp_adsp"},
           { arch: "xtensa-nxp_rt500_adsp_zephyr-elf", nick: "xtensa-nxp_rt500_adsp"},
           { arch: "xtensa-sample_controller_zephyr-elf", nick: "xtensa-sample_controller"},
-          { arch: "xtensa-nxp_rt600_adsp_zephyr-elf", nick: "xtensa-nxp_rt600_adsp"}
+          { arch: "xtensa-nxp_rt600_adsp_zephyr-elf", nick: "xtensa-nxp_rt600_adsp"},
+          { arch: "xtensa-sample_controller32_zephyr-elf", nick: "xtensa-sample_controller32"},
+          { arch: "xtensa-amd_acp_6_0_adsp_zephyr-elf", nick: "xtensa-amd_acp_6_0_adsp"},
+          { arch: "xtensa-intel_ace30_ptl_zephyr-elf", nick: "xtensa-intel_ace30_ptl"},
+          { arch: "xtensa-nxp_rt700_hifi1_zephyr-elf", nick: "xtensa-nxp_rt700_hifi1"},
+          { arch: "xtensa-nxp_rt700_hifi4_zephyr-elf", nick: "xtensa-nxp_rt700_hifi4"}
         ]
 
     steps:
