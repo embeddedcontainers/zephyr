@@ -6,6 +6,30 @@ Currently there are two types of images - a "base" image that contains the core 
 
 # Getting container images
 
+## Prebuilt Images
+
+The simplest way to start using these container images is with the prebuilt images provided by the project. Images are automatically generated using Github Actions and hosted on the Github Container Registry (GHCR.) GHCR is functionally equivalent to Dockerhub and can be used with standard tools like the Docker CLI.
+
+The project follows an evergreen strategy, meaning only the latest SDK release is maintained. Older SDKs are still hosted but it is recommended to build images locally in order to guarantee the latest packages and security updates are included.
+
+### Using prebuilt images
+
+The full list of prebuilt images can be found [here](https://github.com/embeddedcontainers/zephyr/pkgs/container/zephyr/versions?filters%5Bversion_type%5D=tagged).
+
+For example, the image for the `arm` toolchain can be found [here](https://github.com/embeddedcontainers/zephyr/pkgs/container/zephyr/292819795?tag=arm-0.17.0SDK).
+
+To install via the Docker CLI:
+
+```
+$ docker pull ghcr.io/embeddedcontainers/zephyr:arm-0.17.0SDK
+```
+
+Use as base image in Dockerfile:
+
+```
+FROM ghcr.io/embeddedcontainers/zephyr:arm-0.17.0SDK
+```
+
 ## Build images locally
 
 Building images locally ensures you can trust the source of the image, as well as allow you to modify the container image configuration.
