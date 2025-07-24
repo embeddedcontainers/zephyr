@@ -58,7 +58,7 @@ jobs:
 
     strategy:
       matrix:
-        sdk: [0.17.1]
+        sdk: [0.17.2]
         toolchain: [
           { arch: "aarch64-zephyr-elf", nick: "aarch64"},
           { arch: "arc64-zephyr-elf", nick: "arc64"},
@@ -134,7 +134,7 @@ jobs:
 
     strategy:
       matrix:
-        sdk: [0.17.1]
+        sdk: [0.17.2]
 
     steps:
       - name: Checkout repository
