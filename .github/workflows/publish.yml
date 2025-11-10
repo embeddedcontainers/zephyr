@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        sdk: [0.17.3]
+        sdk: [0.17.4]
 
     steps:
       - name: Checkout repository
@@ -58,7 +58,7 @@ jobs:
 
     strategy:
       matrix:
-        sdk: [0.17.3]
+        sdk: [0.17.4]
         toolchain: [
           { arch: "aarch64-zephyr-elf", nick: "aarch64"},
           { arch: "arc64-zephyr-elf", nick: "arc64"},
@@ -126,6 +126,8 @@ jobs:
             ZEPHYR_SDK_VERSION=${{ matrix.sdk }}
 
   posix:
+    needs: [base]
+    
     runs-on: ubuntu-latest
 
     permissions:
@@ -134,7 +136,7 @@ jobs:
 
     strategy:
       matrix:
-        sdk: [0.17.3]
+        sdk: [0.17.4]
 
     steps:
       - name: Checkout repository
