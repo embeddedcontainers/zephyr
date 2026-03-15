@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.7
-FROM debian:stable-slim
+FROM debian:bookworm-slim
 
 ARG ZEPHYR_SDK_VERSION=1.0.0
 ARG ZEPHYR_SDK_INSTALL_DIR=/opt/toolchains/zephyr-sdk-${ZEPHYR_SDK_VERSION}
@@ -25,7 +25,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 # West
 
 RUN --mount=type=cache,target=/root/.cache/pip,sharing=locked \
-  pip install wheel west
+  pip install "wheel>=0,<1" "west>=1,<2"
 
 # Zephyr SDK
 
