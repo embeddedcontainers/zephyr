@@ -13,6 +13,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+      attestations: write
+      id-token: write
 
     strategy:
       matrix:
@@ -41,7 +43,7 @@ jobs:
           file: ./zephyr-base/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           platforms: linux/amd64,linux/arm64
-          provenance: false
+          provenance: true
           tags: ghcr.io/${{ github.repository_owner }}/zephyr:base-${{ matrix.sdk }}SDK
           cache-from: type=gha,scope=zephyr-base-${{ matrix.sdk }}
           cache-to: type=gha,mode=max,scope=zephyr-base-${{ matrix.sdk }}
@@ -56,6 +58,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+      attestations: write
+      id-token: write
 
     strategy:
       matrix:
@@ -78,6 +82,10 @@ jobs:
             },
             {
               arch: "xtensa-amd_acp_7_0_adsp_zephyr-elf",
+              nick: "xtensa-amd_acp_7_0_adsp",
+            },
+            {
+              arch: "xtensa-amd_acp_7_3_adsp_zephyr-elf",
               nick: "xtensa-amd_acp_7_3_adsp",
             },
             { arch: "xtensa-dc233c_zephyr-elf", nick: "xtensa-dc233c" },
@@ -182,7 +190,7 @@ jobs:
           file: ./zephyr/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           platforms: linux/amd64,linux/arm64
-          provenance: false
+          provenance: true
           tags: ghcr.io/${{ github.repository_owner }}/zephyr:${{ matrix.toolchain.nick }}-${{ matrix.sdk }}SDK
           cache-from: type=gha,scope=zephyr-arch-${{ matrix.sdk }}-${{ matrix.toolchain.nick }}
           cache-to: type=gha,mode=max,scope=zephyr-arch-${{ matrix.sdk }}-${{ matrix.toolchain.nick }}
@@ -199,6 +207,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+      attestations: write
+      id-token: write
 
     strategy:
       matrix:
@@ -227,7 +237,7 @@ jobs:
           file: ./zephyr/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           platforms: linux/amd64,linux/arm64
-          provenance: false
+          provenance: true
           tags: ghcr.io/${{ github.repository_owner }}/zephyr:llvm-${{ matrix.sdk }}SDK
           cache-from: type=gha,scope=zephyr-llvm-${{ matrix.sdk }}
           cache-to: type=gha,mode=max,scope=zephyr-llvm-${{ matrix.sdk }}
@@ -244,6 +254,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+      attestations: write
+      id-token: write
 
     strategy:
       matrix:
@@ -272,7 +284,7 @@ jobs:
           file: ./zephyr-posix/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           platforms: linux/amd64
-          provenance: false
+          provenance: true
           tags: ghcr.io/${{ github.repository_owner }}/zephyr:posix-${{ matrix.sdk }}SDK
           cache-from: type=gha,scope=zephyr-posix-${{ matrix.sdk }}
           cache-to: type=gha,mode=max,scope=zephyr-posix-${{ matrix.sdk }}
