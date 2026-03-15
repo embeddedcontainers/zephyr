@@ -230,7 +230,7 @@ jobs:
           tags: ghcr.io/${{ github.repository_owner }}/zephyr:llvm${{ matrix.sdk }}SDK
           build-args: |
             BASE_IMAGE=ghcr.io/embeddedcontainers/zephyr:base-${{ matrix.sdk }}SDK
-            ZEPHYR_SDK_TOOLCHAINS=-l llvm
+            ZEPHYR_SDK_TOOLCHAINS=-l
             ZEPHYR_SDK_VERSION=${{ matrix.sdk }}
 
   posix:
