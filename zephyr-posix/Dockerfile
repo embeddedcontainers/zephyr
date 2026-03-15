@@ -7,7 +7,8 @@ FROM ${BASE_IMAGE}
 
 # OS dependencies and Zephyr SDK posix setup
 
-ARG ZEPHYR_SDK_INSTALL_DIR
+ARG ZEPHYR_SDK_VERSION=1.0.0
+ARG ZEPHYR_SDK_INSTALL_DIR=/opt/toolchains/zephyr-sdk-${ZEPHYR_SDK_VERSION}
 
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
   --mount=type=cache,target=/var/lib/apt/lists,sharing=locked \
@@ -19,6 +20,4 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
   && ${ZEPHYR_SDK_INSTALL_DIR}/setup.sh -c \
   && apt-get remove -y --purge \
   wget \
-  && apt-get autoremove -y \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
+  && apt-get autoremove -y
