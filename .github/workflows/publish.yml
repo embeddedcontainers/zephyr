@@ -228,7 +228,7 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           platforms: linux/amd64,linux/arm64
           provenance: false
-          tags: ghcr.io/${{ github.repository_owner }}/zephyr:llvm${{ matrix.sdk }}SDK
+          tags: ghcr.io/${{ github.repository_owner }}/zephyr:llvm-${{ matrix.sdk }}SDK
           cache-from: type=gha,scope=zephyr-llvm-${{ matrix.sdk }}
           cache-to: type=gha,mode=max,scope=zephyr-llvm-${{ matrix.sdk }}
           build-args: |
