@@ -1,11 +1,14 @@
+# syntax=docker/dockerfile:1.7
 FROM debian:stable-slim
 
-ARG ZEPHYR_SDK_VERSION=0.16.4
+ARG ZEPHYR_SDK_VERSION=1.0.0
 ARG ZEPHYR_SDK_INSTALL_DIR=/opt/toolchains/zephyr-sdk-${ZEPHYR_SDK_VERSION}
 
 # OS dependencies and packages
 
-RUN \
+ENV VIRTUAL_ENV=/opt/venv
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  --mount=type=cache,target=/var/lib/apt/lists,sharing=locked \
   apt-get -y update \
   && apt-get -y install --no-install-recommends \
   ca-certificates \
@@ -13,12 +16,21 @@ RUN \
   device-tree-compiler \
   git \
   ninja-build \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
+  python3 \
+  python3-pip \
+  python3-venv \
+  && python3 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+# West
+
+RUN --mount=type=cache,target=/root/.cache/pip,sharing=locked \
+  pip install wheel west
 
 # Zephyr SDK
 
-RUN \
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  --mount=type=cache,target=/var/lib/apt/lists,sharing=locked \
   export sdk_file_name="zephyr-sdk-${ZEPHYR_SDK_VERSION}_linux-$(uname -m)_minimal.tar.xz" \
   && apt-get -y update \
   && apt-get -y install --no-install-recommends \
@@ -32,21 +44,6 @@ RUN \
   && apt-get remove -y --purge \
   wget \
   xz-utils \
+  && apt-get autoremove -y \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
-
-# Python
-
-ENV VIRTUAL_ENV=/opt/venv
-RUN \
-  apt-get -y update \
-  && apt-get -y install --no-install-recommends \
-  python3 \
-  python3-pip \
-  python3-venv \
-  && python3 -m venv $VIRTUAL_ENV
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
-
-# West
-
-RUN pip install --no-cache-dir wheel west
