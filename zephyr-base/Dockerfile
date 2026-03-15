@@ -38,12 +38,10 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
   xz-utils \
   && wget -q "https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZEPHYR_SDK_VERSION}/${sdk_file_name}" \
   && mkdir -p ${ZEPHYR_SDK_INSTALL_DIR} \
-  && tar -xvf ${sdk_file_name} -C ${ZEPHYR_SDK_INSTALL_DIR} --strip-components=1 \
+  && tar -xf ${sdk_file_name} -C ${ZEPHYR_SDK_INSTALL_DIR} --strip-components=1 \
   && ${ZEPHYR_SDK_INSTALL_DIR}/setup.sh -c \
   && rm ${sdk_file_name} \
   && apt-get remove -y --purge \
   wget \
   xz-utils \
-  && apt-get autoremove -y \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
+  && apt-get autoremove -y

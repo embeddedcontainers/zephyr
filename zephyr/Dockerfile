@@ -8,8 +8,9 @@ FROM ${BASE_IMAGE}
 
 # Target architecture SDK
 
-ARG ZEPHYR_SDK_INSTALL_DIR
-ARG ZEPHYR_SDK_TOOLCHAINS
+ARG ZEPHYR_SDK_VERSION=1.0.0
+ARG ZEPHYR_SDK_INSTALL_DIR=/opt/toolchains/zephyr-sdk-${ZEPHYR_SDK_VERSION}
+ARG ZEPHYR_SDK_TOOLCHAINS="-t arm-zephyr-eabi"
 
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
   --mount=type=cache,target=/var/lib/apt/lists,sharing=locked \
@@ -21,6 +22,4 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
   && apt-get remove -y --purge \
   wget \
   xz-utils \
-  && apt-get autoremove -y \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
+  && apt-get autoremove -y
