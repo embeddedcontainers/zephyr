@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1.7
 ARG ZEPHYR_SDK_VERSION=1.0.0
 ARG ZEPHYR_SDK_INSTALL_DIR=/opt/toolchains/zephyr-sdk-${ZEPHYR_SDK_VERSION}
 ARG ZEPHYR_SDK_TOOLCHAINS="-t arm-zephyr-eabi"
@@ -10,7 +11,8 @@ FROM ${BASE_IMAGE}
 ARG ZEPHYR_SDK_INSTALL_DIR
 ARG ZEPHYR_SDK_TOOLCHAINS
 
-RUN \
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  --mount=type=cache,target=/var/lib/apt/lists,sharing=locked \
   apt-get -y update \
   && apt-get -y install --no-install-recommends \
   xz-utils \
@@ -19,5 +21,6 @@ RUN \
   && apt-get remove -y --purge \
   wget \
   xz-utils \
+  && apt-get autoremove -y \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
