@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.7
 FROM debian:trixie-slim
 
-ARG ZEPHYR_SDK_VERSION=1.0.0
+ARG ZEPHYR_SDK_VERSION=1.0.1
 ARG ZEPHYR_SDK_INSTALL_DIR=/opt/toolchains/zephyr-sdk-${ZEPHYR_SDK_VERSION}
 
 # OS dependencies and packages

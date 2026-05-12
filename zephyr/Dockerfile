@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.7
-ARG ZEPHYR_SDK_VERSION=1.0.0
+ARG ZEPHYR_SDK_VERSION=1.0.1
 ARG ZEPHYR_SDK_INSTALL_DIR=/opt/toolchains/zephyr-sdk-${ZEPHYR_SDK_VERSION}
 ARG ZEPHYR_SDK_TOOLCHAINS="-t arm-zephyr-eabi"
 ARG BASE_IMAGE="zephyr:base-${ZEPHYR_SDK_VERSION}SDK"
@@ -8,7 +8,7 @@ FROM ${BASE_IMAGE}
 
 # Target architecture SDK
 
-ARG ZEPHYR_SDK_VERSION=1.0.0
+ARG ZEPHYR_SDK_VERSION=1.0.1
 ARG ZEPHYR_SDK_INSTALL_DIR=/opt/toolchains/zephyr-sdk-${ZEPHYR_SDK_VERSION}
 ARG ZEPHYR_SDK_TOOLCHAINS="-t arm-zephyr-eabi"
 
